@@ -9,8 +9,6 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         '''Initialize a rectangle with optional size'''
-        
-
         self.height = height
         self.width = width
 
@@ -20,7 +18,6 @@ class Rectangle:
         The height of this rectangle
         The setter ensures that this value is an integer and >= 0
         '''
-
         return self.__height
 
     @height.setter
@@ -37,7 +34,6 @@ class Rectangle:
         The width of this rectangle
         The setter ensures that this value is an integer and >= 0
         '''
-
         return self.__width
 
     @width.setter

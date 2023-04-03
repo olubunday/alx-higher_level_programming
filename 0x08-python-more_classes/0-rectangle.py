@@ -4,3 +4,4 @@
 
 class Rectangle:
     '''My rectangle'''
+    pass

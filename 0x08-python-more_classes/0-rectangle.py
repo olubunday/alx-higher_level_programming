@@ -2,6 +2,6 @@
 
 '''Empty class that defines rectangle'''
 
+
 class Rectangle:
     '''My rectangle'''
-    pass

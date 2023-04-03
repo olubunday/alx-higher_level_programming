@@ -1,22 +1,35 @@
 #!/usr/bin/python3
-'''class that defines a rectangle'''
+"""Class that defines a rectangle"""
 
 
 class Rectangle:
-    '''My rectangle'''
+    """A rectangle with size, position, and methods to calculate more"""
 
     def __init__(self, width=0, height=0):
-        '''Initialize a rectangle with optional size'''
+        """Initialize a rectangle with optional size
+        Args:
+            height (int): height of rectangle
+            width (int): width of rectangle
+        """
 
         self.height = height
         self.width = width
 
+    def __str__(self):
+        """Draw this rectangle as a rectangle made of # characters
+        Returns:
+            str: string representation of this rectangle
+        """
+
+        if self.__height == 0 or self.__width == 0:
+            return ''
+        return '\n'.join('#' * self.__width for _ in range(self.__height))
+
     @property
     def height(self):
-        '''
-        The height of this rectangle
+        """The height of this rectangle
         The setter ensures that this value is an integer and >= 0
-        '''
+        """
 
         return self.__height
 
@@ -30,10 +43,9 @@ class Rectangle:
 
     @property
     def width(self):
-        '''
-        The width of this rectangle
+        """The width of this rectangle
         The setter ensures that this value is an integer and >= 0
-        '''
+        """
 
         return self.__width
 
@@ -46,13 +58,19 @@ class Rectangle:
         self.__width = value
 
     def area(self):
-        '''Returns the area of the rectangle'''
+        """Return this rectangle's area
+        Returns:
+            int: area
+        """
 
         return self.__height * self.__width
 
     def perimeter(self):
-        '''Returns the perimeter of the rectngle''' 
+        """Return this rectangle's perimeter
+        Returns:
+            int: perimeter
+        """
 
         if self.__height == 0 or self.__width == 0:
             return 0
-        return (self.__height * 2) + (self.__width * 2)
+        return self.__height * 2 + self.__width * 2

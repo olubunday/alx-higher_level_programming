@@ -5,7 +5,7 @@
 class Rectangle:
     '''A rectangle with size, position, and methods to calculate more'''
 
-    def __init__(self, width=0, height=0):
+    def __init__(self, height=0, width=0):
         '''Initialize a rectangle with optional size'''
         self.height = height
         self.width = width

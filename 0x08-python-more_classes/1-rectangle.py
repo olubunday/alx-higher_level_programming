@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Class that defines a rectangle'''
+'''Defines a class Rectangle'''
 
 
 class Rectangle:
@@ -17,7 +17,7 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        if not isinstance(value, int):
+        if type(value) is not int:
         '''The setter ensures that the height is an integer and >= 0'''
             raise TypeError('height must be an integer')
         if value < 0:
@@ -31,7 +31,7 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        if not isinstance(value, int):
+        if type(value) is not int:
          '''The setter ensures that this value is an integer and >= 0'''
             raise TypeError('width must be an integer')
         if value < 0:

@@ -1,53 +1,43 @@
 #!/usr/bin/python3
-"""Solve the N queens problem"""
-
-
 import sys
 
-
-def checkQueen(queens, queen):
-    """Check if a queen is not attacking the others
-    Args:
-        queens (list of tuple of int): queens placed so far
-        queen (tuple): queen to check
-    Returns:
-        bool: True if queen can be placed there, False otherwise
-    """
-
-    for x, y in queens:
-        if y == queen[1]:
+def is_valid(board, row, col, n):
+    # Check if there is any queen in the same row
+    for i in range(col):
+        if board[row][i] == 1:
             return False
-        if abs((y - queen[1]) / (x - queen[0])) == 1:
+
+    # Check if there is any queen in the upper diagonal on the left side
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
             return False
+
+    # Check if there is any queen in the lower diagonal on the left side
+    for i, j in zip(range(row, n, 1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
     return True
 
+def solve(board, col, n):
+    # Base case: all queens are placed
+    if col == n:
+        for row in board:
+            print(' '.join(str(x) for x in row))
+        print()
+        return True
 
-def placeQueen(n, queens, solutions):
-    """Try to place the next queen on the board
-    Args:
-        n (int): number of queens that need to be placed
-        queens (list of tuple of int): queens placed so far
-        solutions (list of list of list of int): queen positions that work
-    """
+    # Recursive case: try to place a queen in each row of the current column
+    for i in range(n):
+        if is_valid(board, i, col, n):
+            board[i][col] = 1
+            solve(board, col + 1, n)
+            board[i][col] = 0
 
-    if len(queens) == n:
-        solutions.append([list(q) for q in queens])
-        return
-    x = len(queens)
-    for y in range(n):
-        queen = (x, y)
-        if checkQueen(queens, queen):
-            queens.append(queen)
-            placeQueen(n, queens, solutions)
-            queens.pop()
+    return False
 
-
-def validate_args():
-    """Validate the N queens program's command-line arguments
-    Returns:
-        int: first command-line argument
-    """
-
+if __name__ == '__main__':
+    # Parse command line arguments
     if len(sys.argv) != 2:
         print('Usage: nqueens N')
         sys.exit(1)
@@ -59,18 +49,9 @@ def validate_args():
     if n < 4:
         print('N must be at least 4')
         sys.exit(1)
-    return n
 
+    # Initialize board
+    board = [[0 for j in range(n)] for i in range(n)]
 
-def main():
-    """Entry point to N queens program"""
-
-    n = validate_args()
-    queens = []
-    solutions = []
-    placeQueen(n, queens, solutions)
-    print('\n'.join(str(s) for s in solutions))
-
-
-if __name__ == '__main__':
-    main()
+    # Solve the problem
+    solve(board, 0, n)

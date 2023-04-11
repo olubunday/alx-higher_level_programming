@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Program contains the class BaseGeometry"""
+"""Contains the class BaseGeometry"""
 
 
 class BaseGeometry:
-    """A BaseGeometry class with public instance methods area and integer_validator"""
+    """A class with public instance methods area and integer_validator"""
     def area(self):
         """raises an exception when called"""
         raise Exception("area() is not implemented")

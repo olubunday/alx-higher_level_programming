@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Contains the function load_from_json_file that creates an object from a “JSON file”"""
+"""Contains the function load_from_json_file"""
 
 
 import json

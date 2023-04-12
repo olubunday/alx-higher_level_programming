@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-"""Script that reads stdin line by line and computes metrics"""
+"""Reads 'stdin' line by line and computes metrics"""
+
 
 import sys
+
 
 file_size = 0
 status_tally = {"200": 0, "301": 0, "400": 0, "401": 0,
